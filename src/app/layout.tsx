@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Providers } from "./providers";
 import Header from "./components/Header";
-import "./globals.css";
 import Footer from "./components/Footer";
+
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Next.js component sample",
@@ -15,13 +16,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body>
-        <Header />
-        <div>
-          <Providers>{children}</Providers>
-        </div>
-        <Footer />
+        <Providers>
+          <Header />
+          <main>{children}</main>
+          <Footer />
+        </Providers>
       </body>
     </html>
   );

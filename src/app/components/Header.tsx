@@ -3,9 +3,9 @@ import { ThemeSwitcher } from "./ThemeSwitcher";
 export default function Header() {
   return (
     <>
-      <div>
+      <header>
         <ThemeSwitcher />
-      </div>
+      </header>
     </>
   );
 }

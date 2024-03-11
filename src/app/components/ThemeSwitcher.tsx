@@ -1,8 +1,9 @@
-// app/components/ThemeSwitcher.tsx
+// components/ThemeSwitcher.tsx
 "use client";
 
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
+import { BsSun, BsMoon } from "react-icons/bs";
 
 export function ThemeSwitcher() {
   const [mounted, setMounted] = useState(false);
@@ -12,13 +13,21 @@ export function ThemeSwitcher() {
     setMounted(true);
   }, []);
 
+  const handleSetTheme = () => {
+    setTheme(theme === "light" ? "dark" : "light");
+  };
+
   if (!mounted) return null;
 
   return (
     <div>
-      The current theme is: {theme}
-      <button onClick={() => setTheme("light")}>Light Mode</button>
-      <button onClick={() => setTheme("dark")}>Dark Mode</button>
+      <button className="block p-1 rounded-full" onClick={handleSetTheme}>
+        {theme === "light" ? (
+          <BsMoon className="w-5 h-5" />
+        ) : (
+          <BsSun className="w-5 h-5" />
+        )}
+      </button>
     </div>
   );
 }
