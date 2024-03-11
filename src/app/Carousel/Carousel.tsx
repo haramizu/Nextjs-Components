@@ -1,4 +1,3 @@
-// components/ThemeSwitcher.tsx
 "use client";
 
 import Image from "next/image";
