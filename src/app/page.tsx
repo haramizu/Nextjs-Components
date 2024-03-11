@@ -11,6 +11,9 @@ export default function Home() {
           <li>
             <Link href="/Carousel">Carousel</Link>
           </li>
+          <li>
+            <Link href="/CodeBlock">CodeBlock</Link>
+          </li>
         </ul>
       </div>
     </main>
