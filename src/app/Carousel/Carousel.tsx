@@ -1,11 +1,15 @@
+// components/ThemeSwitcher.tsx
 "use client";
 
 import Image from "next/image";
 import Link from "next/link";
 
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
 interface CarouselItem {
   imageUrl: string;
-  linkUrl: string;
+  targetUrl: string;
   text: string;
 }
 
@@ -16,23 +20,40 @@ interface CarouselComponentProps {
 export function CarouselComponent(props: CarouselComponentProps) {
   return (
     <>
-      <div>
-        <ul>
+      <div className="mx-auto">
+        <Carousel
+          showArrows={true}
+          autoPlay={true}
+          showThumbs={true}
+          infiniteLoop={true}
+          // Show thumbnail using <Image> tag.
+          renderThumbs={() =>
+            props.items.map((item, index) => (
+              <Image
+                src={item.imageUrl}
+                width="1024"
+                height="768"
+                alt="Text"
+                key={index}
+              />
+            ))
+          }
+        >
           {props.items.map((item, index) => (
-            <li key={index}>
-              <Link href={item.linkUrl} target="_blank">
+            <div key={index}>
+              <Link href={item.targetUrl} target="_blank">
                 <Image
                   src={item.imageUrl}
                   width="1024"
                   height="768"
-                  className="w-1024 object-cover"
                   alt={item.text}
+                  onClick={() => (window.location.href = item.targetUrl)}
                 />
                 <p className="legend">{item.text}</p>
               </Link>
-            </li>
+            </div>
           ))}
-        </ul>
+        </Carousel>
       </div>
     </>
   );
