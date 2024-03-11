@@ -1,1 +1,1 @@
-npm install react-slick slick-carousel
+npm install react-responsive-carousel
